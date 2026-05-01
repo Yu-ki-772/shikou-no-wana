@@ -1,26 +1,37 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* 背景・ボーダー等 */
+  --color-bg:      #FAF7F0;
+  --color-surface: #FFFFFF;
+  --color-border:  #E5E0D8;
+
+  /* テキスト */
+  --color-text-primary: #1C1A16;
+  --color-text-muted:   #6B6560;
+
+  /* アクセント: アカデミックブルー */
+  --color-accent:       #2563EB;
+  --color-accent-muted: #EFF6FF;
+
+  /* 問題への対応に対する判定のカラー */
+  --color-trapped-text:   #D97706;
+  --color-trapped-bg:     #FFFBEB;
+  --color-trapped-border: #FDE68A;
+
+  --color-calm-text:   #059669;
+  --color-calm-bg:     #ECFDF5;
+  --color-calm-border: #A7F3D0;
+
+  /* フォント */
+  --font-sans: var(--font-noto-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ベーススタイル */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-sans), "Noto Sans JP", sans-serif;
+}
+
+.font-serif-jp {
+  font-family: var(--font-noto-serif);
 }
