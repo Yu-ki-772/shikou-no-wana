@@ -33,12 +33,8 @@ const ExplanationScreen = ({
 
   useEffect(() => {
     // 1200ms後にフェードアウト開始、500ms後に非表示
-    const fadeTimer = setTimeout(() => setFadeOut(true), 1200);
-    const hideTimer = setTimeout(() => setShowOverlay(false), 1700);
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(hideTimer);
-    };
+    setTimeout(() => setFadeOut(true), 1200);
+    setTimeout(() => setShowOverlay(false), 1700);
   }, []);
 
   return (
