@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import type { Answer, Screen } from "@/types";
 import { QUESTIONS } from "@/lib/questions";
 import { shareToX } from "@/lib/share";
@@ -23,30 +23,25 @@ export default function HomePage() {
   const handleStart = () => setScreen("question");
 
   // 回答を記録して解説画面へ遷移
-  const handleAnswer = useCallback(
-    (choiceId: string) => {
-      const answer: Answer = {
-        questionId: currentQuestion.id,
-        choiceId,
-      };
-      setAnswers((prev) => [...prev, answer]);
-      setScreen("explanation");
-    },
-    [currentQuestion]
-  );
+  const handleAnswer = (choiceId: string) => {
+    const answer: Answer = {
+      questionId: currentQuestion.id,
+      choiceId,
+    };
+    setAnswers((prev) => [...prev, answer]);
+    setScreen("explanation");
+  };
 
-  const handleNext = useCallback(() => {
+  const handleNext = () => {
     if (isLast) {
       setScreen("summary");
     } else {
       setCurrentIndex((prev) => prev + 1);
       setScreen("question");
     }
-  }, [isLast]);
+  };
 
-  const handleShare = useCallback(() => {
-    shareToX(answers);
-  }, [answers]);
+  const handleShare = () => shareToX(answers);
 
   const handleRestart = () => {
     setScreen("title");
