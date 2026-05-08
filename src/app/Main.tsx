@@ -11,15 +11,20 @@ import ExplanationScreen from "@/components/ExplanationScreen";
 import SummaryScreen from "@/components/SummaryScreen";
 
 export default function Main() {
+  // 状態管理
   const [screen, setScreen] = useState<Screen>("title");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
 
+  // 現在の問題
   const currentQuestion = QUESTIONS[currentIndex];
+  // 最後の問題かどうか
   const isLast = currentIndex === QUESTIONS.length - 1;
 
+  // スタート画面から問題画面へ遷移
   const handleStart = () => setScreen("question");
 
+  // 回答を記録して解説画面へ遷移
   const handleAnswer = (choiceId: string) => {
     const answer: Answer = {
       questionId: currentQuestion.id,
@@ -29,6 +34,7 @@ export default function Main() {
     setScreen("explanation");
   };
 
+  // 次の問題または結果画面へ遷移
   const handleNext = () => {
     if (isLast) {
       setScreen("summary");
@@ -38,14 +44,17 @@ export default function Main() {
     }
   };
 
+  // Xへシェア
   const handleShare = () => shareToX(answers);
 
+  // 最初からやり直す
   const handleRestart = () => {
     setScreen("title");
     setCurrentIndex(0);
     setAnswers([]);
   };
 
+  // 画面の切り替え
   switch (screen) {
     case "title":
       return <TitleScreen onStart={handleStart} />;
