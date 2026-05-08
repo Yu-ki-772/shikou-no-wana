@@ -1,6 +1,6 @@
 import type { Question } from "@/types";
 
-export const QUESTIONS: Question[] = [
+export const QUESTIONS = [
   {
     id: "cinema",
     scenarioTitle: "映画館のメニュー",
@@ -68,4 +68,8 @@ export const QUESTIONS: Question[] = [
     explanation:
       "確率的にはAの方が高くなります。「読書が趣味で数学パズルもする人」は「読書が趣味の人」の一部にすぎないからです。それでも目の前の人物像(専門書・数式)に合うBを選びたくなる――典型的なイメージに判断を引っ張られると、論理的な確率を見落としてしまうことがあります。",
   },
-];
+] as const satisfies Question[];
+// ScenarioId を QUESTIONS から自動導出するために as const でリテラル型を保持しつつ、
+// satisfies で Question[] との型チェックも担保している
+
+export type ScenarioId = typeof QUESTIONS[number]["id"];

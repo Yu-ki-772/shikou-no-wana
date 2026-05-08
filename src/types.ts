@@ -1,20 +1,16 @@
-export type ScenarioId =
-  | "cinema"
-  | "eiffel"
-  | "yoga"
-  | "coin_toss"
-  | "cafe";
-
+// 選択肢の判定結果
 export type ChoiceResult = "trapped" | "calm";
 
+// 各選択肢
 export type Choice = {
   id: string;
   label: string;
   result: ChoiceResult;
 };
 
+// 問題
 export type Question = {
-  id: ScenarioId;
+  id: string;
   scenarioTitle: string;
   lesson: string;
   questionText: string;
@@ -22,9 +18,11 @@ export type Question = {
   explanation: string;
 };
 
+// ユーザーの回答
 export type Answer = {
-  questionId: ScenarioId;
+  questionId: string;
   choiceId: string;
 };
 
+// どの画面を表示するかを管理するステート
 export type Screen = "title" | "question" | "explanation" | "summary";
