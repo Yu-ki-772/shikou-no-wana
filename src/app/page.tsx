@@ -67,9 +67,7 @@ export default function HomePage() {
     case "explanation": {
       const currentAnswer = answers.find(
         (a) => a.questionId === currentQuestion.id
-      );
-      // 回答が存在しない場合は何も表示しない
-      if (!currentAnswer) return null;
+      )!;
 
       return (
         <ExplanationScreen
